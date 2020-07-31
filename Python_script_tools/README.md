@@ -1,0 +1,1 @@
+Python scripts for the manipulation of sequence data, with the aim of helping construct and analyze a SSN. Not required for the functioning of MetaSSN, but used as examples of how to process data in the tutorial.
