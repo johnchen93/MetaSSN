@@ -8,4 +8,6 @@ Where SSN pipe performs the BLAST analysis up to the metanode clustering, MetaSS
 # Instructions
 For an overview of the usage capabilites of MetaSSN see the [MetaSSN manual](SSN%20Meta%20v4%20manual.pdf).  
   
-To get an idea of how MetaSSN can be used as part of the SSN generation and analysis pipeline, see the [MetaSSN tutorial](metaSSN%20tutorial.pdf).  
+To get an idea of how MetaSSN can be used as part of the SSN generation and analysis pipeline, see the [MetaSSN tutorial](metaSSN%20tutorial.pdf).
+  
+The MetaSSN scripts and example files for the tutorial can be downloaded from the [Release](https://github.com/johnchen93/MetaSSN/releases/tag/1.0).  
