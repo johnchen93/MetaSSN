@@ -139,7 +139,7 @@ def createNetwork():
     # assign data columns in BLAST file
     cols={'q':query_col,'s':subject_col,'b':bitscore_col} # q=query, s=subject, e=e-value, b=bitscore
     # collect sequence filter
-    filter = gatherFilter(filter_files)
+    filter = gatherFilter(filter_path, filter_files)
     filter_label = "" if filter is None else "filtered_"
     
     # gather annotation levels, only needs to be done once
@@ -313,6 +313,7 @@ def annotate(node_stats, reps_by_node_table, seq_by_node_table, annotations, fre
             stat_header = f"{info['level']}:{info['label']}"
             annot_type = annotations[stat_header]
             delim, id_col, data_col = info.get('delim'), info.get('id_col'), info.get('data_col')
+            parse_table = delim is not None and id_col is not None and data_col is not None
             
             
             files = info['files']
@@ -330,9 +331,13 @@ def annotate(node_stats, reps_by_node_table, seq_by_node_table, annotations, fre
                         line = curline.strip()
                         if line=="":
                             continue
-                        row = line.split(delim)
-                        id = row[id_col].strip()
-                        val = row[data_col].strip() if data_col is not None else 1
+                        if parse_table:
+                            row = line.split(delim)
+                            id = row[id_col].strip()
+                            val = row[data_col].strip()
+                        else: # counting
+                            id = line.strip()
+                            val = 1
                         if id in node_ref: # if all reps are unique, this should indicate one match
                             agg[node_ref[id]].append(val)
                     # summarize and/or format results
