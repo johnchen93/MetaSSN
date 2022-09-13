@@ -19,7 +19,7 @@ def readMembership(file):
             asdict[seq] = node
     return aslist, asdict
 
-def gatherFilter(filter_files):
+def gatherFilter(filter_path, filter_files):
     debugOut('Gathering sequence ID filters for metanode analysis.', 'start block')
     
     if len(filter_files) > 0:
